@@ -1,0 +1,52 @@
+<div class="jumbotron">
+  <div class="container">
+    <h1>{{match.nombre}}</h1>
+    <p>{{infoPartido}}</p>
+    <p ng-if="!loading">
+      <button class="btn btn-primary" ng-click="iAmIn()" ng-if="match.status !== 'titular'">
+        Voy
+      </button>
+      <button class="btn btn-primary" ng-click="maybeIn()" ng-if="match.status !== 'suplente'">
+        Suplente
+      </button>
+      <button class="btn btn-primary" ng-click="decline()" ng-if="match.status !== 'nojuega'">
+        Me bajo
+      </button>
+    </p>
+  </div>
+</div>
+
+<div class="col-md-4 panel panel-default panelTitulares">
+  <div class="panel-heading">
+    <h3 class="panel-title">Titulares</h3>
+  </div>
+  <div class="panel-body">
+    <div class="list-group" ng-repeat="player in match.jugadores">
+      <player-list-item player="player"> </player-list-item>
+    </div>
+  </div>
+</div>
+
+
+<div class="col-md-4 panel panel-default panelSuplentes">
+  <div class="panel-heading">
+    <h3 class="panel-title">Suplentes</h3>
+  </div>
+  <div class="panel-body">
+    <div class="list-group" ng-repeat="player in match.suplentes">
+      <player-list-item player="player"> </player-list-item>
+    </div>
+  </div>
+</div>
+
+<div class="col-md-4 panel panel-default panelNoVoy">
+  <div class="panel-heading">
+    <h3 class="panel-title">No van</h3>
+  </div>
+  <div class="panel-body">
+    <div class="list-group" ng-repeat="player in match.nojuegan">
+      <player-list-item player="player"> </player-list-item>
+    </div>
+  </div>
+</div>
+

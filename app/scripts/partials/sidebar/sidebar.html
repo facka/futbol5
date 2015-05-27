@@ -1,0 +1,25 @@
+<div ng-if="user.loggedIn">
+  <div id="sidebar-wrapper">
+      <ul class="sidebar-nav">
+          <li>
+              <a ng-href="/">
+                  <img style="background: url({{user.picture}}) center;" class="profile-picture" > {{user.name}}
+              </a>
+          </li>
+          <li>
+            <h4>Ligas</h4>
+            <button class="btn btn-primary" ng-click="joinLeague()">Unirse a una liga</button>
+            <div ng-if="player.ligas.length == 0">
+              <p>Aun no perteneces a ninguna liga</p>
+            </div>
+            <div ng-repeat="league in player.ligas">
+              <a ng-href='/#/league/{{league}}' >{{league}}</a>
+            </div>
+          </li>
+          <li>
+            <h4>Proximos partidos</h4>
+          </li>
+      </ul>
+  </div>
+</div>
+

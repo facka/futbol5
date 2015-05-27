@@ -1,0 +1,53 @@
+<h4 class="modal-title" id="partidoModalLabel">Nuevo partido</h4>
+<p id="partidoModalSubTitle">Complete los datos del partido y escriba el nombre de su Liga para que todos los subscriptos a la Liga reciban las notificaciones.</p>
+<div>
+ <form class="form-horizontal" role="form">
+  <div class="form-group">
+    <label id="matchNameLabel" for="inputNombre" class="col-sm-2 control-label">Nombre</label>
+    <div class="col-sm-10">
+      <input type="text" class="form-control" id="inputNombre" placeholder="Nombre del partido">
+    </div>
+  </div>
+  <div class="form-group">
+    <label id="matchPlaceLabel" for="inputCancha" class="col-sm-2 control-label">Cancha</label>
+    <div class="col-sm-10">
+      <input type="text" class="form-control" id="inputCancha" placeholder="Cancha">
+    </div>
+  </div>
+  <div class="form-group">
+    <label id="matchDateLabel" for="inputFecha" class="col-sm-2 control-label">Fecha</label>
+    <div class="col-sm-10">
+      <input type="text" class="form-control datepicker" id="inputFecha" placeholder="Fecha">
+    </div>
+  </div>
+  <div class="form-group">
+    <label id="matchTimeLabel" for="inputHora" class="col-sm-2 control-label">Hora</label>
+    <div class="col-sm-10">
+      <input type="text" class="form-control timepicker" id="inputHora" placeholder="Hora">
+    </div>
+  </div>
+  <div class="form-group">
+    <label id="matchPriceLabel" for="inputPrecio" class="col-sm-2 control-label">Precio</label>
+    <div class="col-sm-10">
+      <input type="text" class="form-control" id="inputPrecio" placeholder="Precio por jugador">
+    </div>
+  </div>
+  <div class="form-group">
+    <label id="matchNumberOfPlayersLabel" for="inputCantidadJugadores" class="col-sm-2 control-label">Cantidad de Jugadores</label>
+    <div class="col-sm-10">
+      <input type="text" class="form-control" id="inputCantidadJugadores" placeholder="Cantidad de Jugadores">
+    </div>
+  </div>
+  <div class="form-group">
+    <label id="matchLeagueLabel" for="inputLigaPartido" class="col-sm-2 control-label">Liga</label>
+    <div class="col-sm-10">
+      <input type="text" class="form-control" id="inputLigaPartido" placeholder="Liga">
+    </div>
+  </div>
+ </form>
+</div>
+<div class="modal-footer">
+	<button id="cancelPartidoButton" type="button" class="btn btn-default" data-dismiss="modal">Cancelar</button>
+	<button id="enviarPartidoButton" type="button" class="btn btn-primary">Enviar</button>
+</div>
+

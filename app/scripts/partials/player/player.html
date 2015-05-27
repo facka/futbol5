@@ -1,0 +1,32 @@
+<div>
+  <h1>{{player.name}}</h1>
+  <div id="star" title="regular"></div>
+
+  <h2>Ligas</h2>
+
+  <nav class="navbar navbar-default" role="navigation">
+    <div class="container-fluid">
+      <div class="navbar-header">
+        <h2>Ligas</h2>
+      </div>
+      <p class="navbar-text navbar-right">
+        <button class="btn btn-primary" ng-click="joinLeague()">Unirse a una liga</button>
+      </p>
+    </div>
+  </nav>
+
+  <div class='row'>
+    <div class='col-md-4'>
+      <div ng-if="player.ligas.length == 0">
+        <p>Aun no perteneces a ninguna liga</p>
+      </div>
+      <div ng-repeat="league in player.ligas">
+        <a ng-href='/liga?name={{league.name}}&user={{player.id}}' >{{league}}</a>
+      </div>
+    </div>
+    <div class='col-md-4'>
+      <a ng-href='/partidos?code={{match}}&user={{player.id}}' ng-repeat="match in league.partidos">{{match.name}}</a>
+    </div>
+  </div>
+</div>
+

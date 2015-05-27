@@ -1,0 +1,21 @@
+    <div class="site-wrapper">
+
+      <div class="site-wrapper-inner">
+
+        <div class="cover-container">
+
+          <div class="inner cover">
+            <h1 id="pageTitle" class="cover-heading">Futbol 5</h1>
+            <p id="pageSubtitle" class="lead">Organizar un partido de futbol5 nunca fue tan simple</p>
+            <div ng-if="!user.loggedIn && !loading"class="lead">
+                <button class="btn btn-primary btn-lg" ng-click="login('facebook')">Login with facebook
+                </button>
+            </div>
+            <div class="fb-share-button" data-href="https://futbol5.jit.su/" data-layout="button_count"></div>
+          <pre ng-if="loading">Loading...</pre>
+
+        </div>
+
+      </div>
+
+    </div>

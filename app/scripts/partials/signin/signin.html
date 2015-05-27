@@ -1,0 +1,26 @@
+<h4 class="modal-title" id="signInModalLabel">Registrarse</h4>
+<p id="signInModalDescription">Complete sus datos y escriba el nombre de la Liga a la cual se quiere subscribir.</p>
+<div>
+	<form class="form-horizontal" role="form" ng-submit="acceptClicked()">
+	  <div class="form-group">
+	    <label id="userNameLabel" for="inputUserName" class="col-sm-2 control-label">Nombre</label>
+	    <div class="col-sm-10">
+	      <input type="text" class="form-control" id="inputUserName" placeholder="Nombre" ng-model="user.nombre" required>
+	    </div>
+	  </div>
+	  <div class="form-group">
+	    <label id="emailLabel" for="inputEmail" class="col-sm-2 control-label">Email</label>
+	    <div class="col-sm-10">
+	      <input type="email" class="form-control" id="inputEmail" placeholder="Email" ng-model="user.email" required>
+	    </div>
+	  </div>
+	  <div class="form-group">
+	    <label id="ligaLabel" for="inputLiga" class="col-sm-2 control-label">Liga</label>
+	    <div class="col-sm-10">
+	      <input type="text" class="form-control" id="inputLiga" placeholder="Liga" ng-model="user.liga" required>
+	    </div>
+	  </div>
+	  <button id="cancelSignInButton" type="button" class="btn btn-primary" data-dismiss="modal" ng-click="cancelClicked()">Cancelar</button>
+	  <button id="acceptSignInButton" type="submit" class="btn btn-primary">Enviar</button>
+	</form>
+</div>
