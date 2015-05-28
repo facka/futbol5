@@ -102,12 +102,17 @@ UserService.prototype.activateUser = function(code,success, error) {
 UserService.prototype.notificarNuevoPartido = function(partido, language) {
 	var that = this;
 	var onSuccessGettingLiga = function (liga) {
+
 		for (var index in liga.jugadores){
-			var jugadorEmail = liga.jugadores[index];
+			var jugadorId = liga.jugadores[index];
+
+			console.log('Notificando nuevo partido: jugadorId = ' + jugadorId);
 
 			var onSuccessGettingJugador = function(jugador) {
 				if (jugador) {
-					EmailService.sendEmail(EmailService.getPartidoInvitationEmailOptions(jugador,partido,language));
+					if (jugador.email) {
+						EmailService.sendEmail(EmailService.getPartidoInvitationEmailOptions(jugador,partido,language));
+					}
 				}
 				else {
 					console.log('No se encontro el usuario en la liga para enviarle el mail.');
@@ -117,15 +122,16 @@ UserService.prototype.notificarNuevoPartido = function(partido, language) {
 				console.log(error);
 			};
 
-			that.db.getBy('email', jugadorEmail, onSuccessGettingJugador, onErrorGettingJugador);
+			that.db.get(jugadorId, onSuccessGettingJugador, onErrorGettingJugador);
 		}
+
 	};
 
 	var onErrorGettingLiga = function (error) {
 		//No se hace nada, ver la forma de notificar
 		console.log(error);
 	};
-
+	console.log("Notificando nuevo partido: liga = " + partido.liga);
 	LigaService.get(partido.liga, onSuccessGettingLiga, onErrorGettingLiga);
 
 	//TODO get Liga del partido , iterar sobre los jugadores de la liga y enviar el mail

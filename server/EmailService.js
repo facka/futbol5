@@ -10,7 +10,7 @@ function EmailService() {
 	    service: 'Gmail',
 	    auth: {
 	        user: 'futbol5server@gmail.com',
-	        pass: '321Azxc1'
+	        pass: '321Azxc2'
 	    }
 	});
 
@@ -201,7 +201,7 @@ EmailService.prototype.getPartidoInvitationEmailOptions = function(user, partido
 	    to: user.email, // list of receivers
 	    subject: Labels.getLabel("subject"), // Subject line
 	    text: "Hola "+ user.name, // plaintext body
-	    html: '<p>'+Labels.getLabel("message")+'</p> <br> <a id="link" href="'+this.serverURL+'/partidos?code='+partido.code+'&user='+user.code+'">'+Labels.getLabel("link")+'</a>'
+	    html: '<p>'+Labels.getLabel("message")+'</p> <br> <a id="link" href="'+this.serverURL+'/#/matches/'+partido.code+'">'+Labels.getLabel("link")+'</a>'
 	}
 };
 

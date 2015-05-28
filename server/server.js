@@ -12,9 +12,10 @@ LigaService.inject('UserService', UserService);
 LigaService.inject('PartidoService', PartidoService);
 
 var serverURL = 'http://localhost:8081';
+var frontendURL = 'http://localhost:9091';
 //var serverURL = 'http://futbol5-2.jit.su';
 
-EmailService.setServerURL(serverURL);
+EmailService.setServerURL(frontendURL);
 
 var express = require('express');
 var app = express()
