@@ -23,18 +23,23 @@ angular.module('futbol5').directive('player', function () {
         }
     };
 
-}).controller('PlayerCtrl', ['$scope', '$location', '$window', 'ApiService', 'AuthService', 'AlertManager',
-    function PlayerCtrl($scope, $location, $window, ApiService, AuthService, AlertManager) {
+}).controller('PlayerCtrl', ['$scope', '$location', '$window', 'ApiService', 'AuthService', 'AlertManager', 'player',
+    function PlayerCtrl($scope, $location, $window, ApiService, AuthService, AlertManager, player) {
           $scope.user = AuthService.user;
 
-          ApiService.getPlayer($scope.id).then(
-              function(response) {
-                  $scope.player = response.data;
-              },
-              function(reason) {
-                  AlertManager.show('Error al mostrar jugador', AlertManager.ERROR);
-              }
-          );
+          if (player) {
+            $scope.player = player.data;
+          }
+          else {
+            ApiService.getPlayer($scope.id).then(
+                function(response) {
+                    $scope.player = response.data;
+                },
+                function(reason) {
+                    AlertManager.show('Error al mostrar jugador', AlertManager.ERROR);
+                }
+            );
+          }
 
           $scope.joinLeague = function() {
             var league = prompt('Ingrese nombre de la liga', '');

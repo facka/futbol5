@@ -55,14 +55,14 @@
     <h2>Partidos</h2>
     <div ng-if="!matches.length">No hay partidos en la liga</div>
     <div ng-if="matches.length" ng-repeat="match in matches">
-      <a ng-href='/#/matches/{{match.code}}'>{{match.nombre}}</a>
+      <a ng-href="/#/matches/{{match.code}}">{{match.nombre}}</a>
     </div>
   </div>
 
   <div class='col-md-4 player-list'>
     <h2>Jugadores</h2>
     <div ng-repeat="player in league.players">
-      <a ng-href='/#/player?code={{player.id}}'>{{player.name}}</a>
+      <a ng-href="/#/player/{{player.code}}">{{player.name}}</a>
     </div>
   </div>
 </div>

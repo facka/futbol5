@@ -131,9 +131,17 @@ angular.module('futbol5', [
       controller: 'ActivateCtrl'
     })
     .state('player', {
-      url: '/player',
+      url: '/player/:id',
       templateUrl: 'scripts/partials/player/player.html',
-      controller: 'PlayerCtrl'
+      controller: 'PlayerCtrl',
+      resolve: {
+        ApiService: 'ApiService',
+        player: function(ApiService, $stateParams){
+              var code = $stateParams.id;
+              return ApiService.getPlayer(code);
+        }
+      }
+
     });
 })
 .run(['$rootScope', '$state', '$stateParams', 'AuthService', 'AlertManager',
