@@ -24,36 +24,37 @@
 
 ### Set I am in a match
   POST '/partidos/<matchId>/jugadores'
-  payload: 
-  ```
+payload: 
+```
   {as: 'titular'}
-  ```
+```
 
 ### Set I maybe in a match
   POST '/partidos/<matchId>/jugadores'
-  payload: 
-  ```
+payload: 
+```
   {as: 'suplente'}
-  ```
+```
 ### Set I am not in a match
   POST '/partidos/<matchId>/jugadores'
-  payload: 
-  ```
+payload: 
+```
   {as: 'nojuega'}
-  ```  
+```  
 ### Remove me from a match
 
 	DELETE 'api/partidos/<matchId>/jugadores'
-	payload: 
-	```
+payload: 
+```
   {user: 'nojuega'}
-  ```  
+```  
 	
 ### Get match
 	
 	GET 'api/partidos/<matchId>
   Response: 200 Ok. Content: 
-  ```
+
+```
   {
    "nombre":"Nombre test",
    "cancha":"Cancha test",
@@ -67,8 +68,7 @@
    "cantidadJugadores":"10",
    "code":"jqTHHQAWaRsXnoM0Jl1o"
   }
-  
-  ```
+```
 
 ### Get Match Status For Player
 	  GET api/partidos/<matchId>/voy
@@ -76,12 +76,26 @@
 	  
 	  where status can be: null, 'suplente', 'titular', 'nojuega'
 	
-  this.login = function(data) {
-    return POST('/login', data);
-  };
+### Login
+  POST '/login'
 
-  this.logout = function() {
-    return POST('/logout');
+payload:
+```
+  {
+   "userId":"10154345018365203",
+   "username":"Facundo Crego",
+   "token":"CAAFd4GpZAugkBergtAcTmTAULFcB7MVB62pP7tCESQIGzoJSFX2mmZBA2ie0K4y7V",
+   "loginType":"facebook"
+  }
+```
+
+Response:
+```
+{"token":"CAAFd4GpZAugkBAMpM2GgfymCZBYUZBa7NdorNaMyXmZC94AV0crj2"}
+```
+
+### Logout
+  POST '/logout'
   };
 
 	this.registerUser = function(data) {
