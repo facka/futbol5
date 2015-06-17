@@ -27,9 +27,8 @@ LigaService.prototype.saveLiga = function(liga,success,error) {
 };
 LigaService.prototype.get = function(name,success,error) {
 	this.db.get(name,function(liga) {
-		liga.players = [];
 
-		var response = responseManager(liga.jugadores.length, success, error, liga);
+		var response;
 
 		function addPlayer(player) {
 			console.log('player: '+ player);
@@ -37,12 +36,20 @@ LigaService.prototype.get = function(name,success,error) {
 			response.addSuccess();
 		}
 
-		for (var jugadorId in liga.jugadores) {
-			Services.UserService.get(liga.jugadores[jugadorId],addPlayer, function(reason) {
-				response.addError(reason);
-			});
+		function addError(reason) {
+			response.addError(reason);
 		}
 
+		if (liga) {
+			liga.players = [];
+			response = responseManager(liga.jugadores.length, success, error, liga);
+			for (var jugadorId in liga.jugadores) {
+				Services.UserService.get(liga.jugadores[jugadorId],addPlayer, addError);
+			}
+		}
+		else {
+			success(null);
+		}
 	},error);
 };
 LigaService.prototype.updateLiga  = function(liga,success,error) {

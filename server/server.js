@@ -440,7 +440,12 @@ app.delete('/api/partidos/:id/jugadores', function(req, res) {
 	    res.statusCode = 400;
 	    return res.json('Invalid request body');
 	}
+  var userId = Authentication.authenticate(req, res);
 	var onSuccessGettingPartido = function(partido) {
+    if (partido.admin !== userId) {
+      res.statusCode = 403;
+      res.json('Unathorized: user must be admin of the match to delete a user');
+    }
 		var onSuccess = function(usuario) {
 			var onSuccessRemoving = function() {
 				res.json(PartidoService.toLightPartido(partido));
